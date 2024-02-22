@@ -46,7 +46,58 @@ df_typhoon = pl.DataFrame(data_typhoon)
 ```
 
 
-## Row {height=70%}
+## Row {height=90%}
+
+### Column {width=50%}
+
+```{python}
+#| title: map of typhoon paths
+fig_typhoon = px.line_mapbox(
+    df_typhoon,
+    lat='latitude',
+    lon='longitude',
+    color='name',
+    # animation_frame='name',
+)
+
+fig_typhoon.update_layout(
+    mapbox_style="carto-darkmatter",
+    mapbox_center_lat=36,
+    mapbox_center_lon=138,
+    mapbox_zoom=3,
+)
+```
+
+```{python}
+# show data structure of fig
+print(fig_typhoon)
+```
+
+```{python}
+#| title: map of typhoon paths
+# fig_typhoon = go.Figure(
+#     go.Scattermapbox(
+#         lat = df_typhoon['latitude'],
+#         lon = df_typhoon['longitude'],
+#         mode = 'lines+markers',
+#         # marker = go.scattermapbox.Marker(
+#         #     size=df_solar_farms['capacity_mw']/10
+#         # ),
+#     )
+# )
+
+# fig_typhoon.update_layout(
+#     mapbox_style="carto-darkmatter",
+#     mapbox=dict(
+#         center=go.layout.mapbox.Center(
+#             lat=36,
+#             lon=138
+#         ),
+#         zoom=3
+#     ),
+# )
+```
+
 
 ### Column {width=50%}
 
@@ -75,52 +126,18 @@ fig_solar_farms.update_layout(
 )
 ```
 
-
-### Column {width=50%}
-
 ```{python}
-#| title: map of typhoon paths
-# fig_typhoon = go.Figure(
-#     go.Scattermapbox(
-#         lat = df_typhoon['latitude'],
-#         lon = df_typhoon['longitude'],
-#         mode = 'lines+markers',
-#         # marker = go.scattermapbox.Marker(
-#         #     size=df_solar_farms['capacity_mw']/10
-#         # ),
-#     )
-# )
-
-# fig_typhoon.update_layout(
-#     mapbox_style="carto-darkmatter",
-#     mapbox=dict(
-#         center=go.layout.mapbox.Center(
-#             lat=36,
-#             lon=138
-#         ),
-#         zoom=3
-#     ),
-# )
+# show data structure of fig_solar_farms
+print(fig_solar_farms)
+# fig_solar_farms.show("json") # not working...
 ```
 
-```{python}
-#| title: map of typhoon paths
-fig_typhoon = px.line_mapbox(
-    df_typhoon,
-    lat='latitude',
-    lon='longitude',
-    color='name',
-    animation_frame='name',
-)
+## Row {height=10%}
 
-fig_typhoon.update_layout(
-    mapbox_style="carto-darkmatter",
-    mapbox_center_lat=36,
-    mapbox_center_lon=138,
-    mapbox_zoom=3,
-)
+```{python}
+#| title: ??? 
+print('...')
 ```
 
 
-## Row {height=30%}
 
