@@ -1,16 +1,7 @@
----
-title: "test quarto dashboard"
-author: "oatcracker"
----
-
-
-```python
 import polars as pl
 import plotly.express as px
 import plotly.graph_objects as go
-```
 
-```python
 # create df for solar farms
 data_solar_farms = {
     "name"          : ["Setouchi Kirei", "Eurus Rokkasho", "Tomatoh Abira"],
@@ -22,9 +13,7 @@ data_solar_farms = {
     "year_operation": [2018, 2015, 2015],
 }
 df_solar_farms = pl.DataFrame(data_solar_farms)
-```
 
-```python
 # create df for typhoon paths
 data_typhoon = {
     'name'            : ['Lan',  'Lan',  'Lan',  'Guc',  'Guc',  'Guc'],
@@ -42,10 +31,7 @@ data_typhoon = {
     'grade'           : [1, 3, 2, 4, 6, 5]
 }
 df_typhoon = pl.DataFrame(data_typhoon)
-```
 
-
-```python
 #| title: map of typhoon paths
 fig_typhoon = px.line_mapbox(
     df_typhoon,
@@ -61,40 +47,7 @@ fig_typhoon.update_layout(
     mapbox_center_lon=138,
     mapbox_zoom=3,
 )
-```
 
-```python
-# show data structure of fig
-# print(fig_typhoon)
-```
-
-```python
-#| title: map of typhoon paths
-# fig_typhoon = go.Figure(
-#     go.Scattermapbox(
-#         lat = df_typhoon['latitude'],
-#         lon = df_typhoon['longitude'],
-#         mode = 'lines+markers',
-#         # marker = go.scattermapbox.Marker(
-#         #     size=df_solar_farms['capacity_mw']/10
-#         # ),
-#     )
-# )
-
-# fig_typhoon.update_layout(
-#     mapbox_style="carto-darkmatter",
-#     mapbox=dict(
-#         center=go.layout.mapbox.Center(
-#             lat=36,
-#             lon=138
-#         ),
-#         zoom=3
-#     ),
-# )
-```
-
-
-```python
 #| title: map solar farms
 fig_solar_farms = go.Figure(
     go.Scattermapbox(
@@ -117,19 +70,10 @@ fig_solar_farms.update_layout(
         zoom=3
     ),
 )
-```
 
-```python
-# show data structure of fig_solar_farms
-# print(fig_solar_farms)
-# fig_solar_farms.show("json") # not working...
-```
+# add typhoon map to solar map
+fig_solar_farms.add_trace(
+    fig_typhoon.data[0]
+)
 
-```python
-#| title: ??? 
-# fig_solar_farms.add_trace(
-#     fig_typhoon.data[0]
-# )
-```
-
-
+fig_solar_farms.show()

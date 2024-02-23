@@ -9,12 +9,10 @@ website:
       - href: index.qmd
         text: Home
       - about.qmd
-
+      - dashboard.qmd
+      
 format:
   html:
     theme: cosmo
     css: styles.css
     toc: true
-
-
-

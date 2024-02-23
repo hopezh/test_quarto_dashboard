@@ -1,0 +1,72 @@
+---
+title: 'oat dashboard'
+author: 'oat'
+format: dashboard
+logo: images/EPiSODE-logo.png
+---
+
+# Page 1
+
+## Row 
+
+```{python}
+#| content: valuebox
+#| title: "Churn rate 2022"
+dict(
+  icon = "archive",
+  color = "light",
+  value = "17%"
+)
+```
+
+```{python}
+#| content: valuebox
+#| title: "Current churn rate"
+dict(
+  icon = "graph-down",
+  color = "light",
+  value = "14%"
+)
+```
+
+```{python}
+#| content: valuebox
+#| title: "Churn rate goal"
+dict(
+  icon = "bullseye",
+  color = "warning",
+  value = "10%"
+)
+```
+
+## Row
+
+```{python}
+#| title: card p1-r2-c1
+print('p1-r2-c1')
+```
+
+```{python}
+#| title: card p1-r2-c2
+print('p1-r2-c2')
+```
+
+## Row
+
+```{python}
+#| title: card p1-r3-c1
+print('p1-r3-c1')
+```
+
+# Page 2
+
+```{python}
+#| title: card p2-r1
+print('card p2-r1')
+```
+
+```{python}
+#| title: card p2-r2
+print('card p2-r2')
+```
+
