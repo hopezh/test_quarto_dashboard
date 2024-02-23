@@ -1,8 +1,11 @@
 ---
-title: 'oat dashboard'
-author: 'oat'
+title: 'oatboard'
+# author: 'oat'
 format: dashboard
-logo: images/EPiSODE-logo.png
+# logo: images/EPiSODE-logo.png
+# logo: images/zj_logo___v01.png
+# logo: images/Picture4.png
+logo: images/Picture5.png
 ---
 
 # Page 1
@@ -12,10 +15,14 @@ logo: images/EPiSODE-logo.png
 ```{python}
 #| content: valuebox
 #| title: "Churn rate 2022"
+from datetime import datetime
+
+now = datetime.now().strftime('%H:%M:%S')
+
 dict(
   icon = "archive",
   color = "light",
-  value = "17%"
+  value = now
 )
 ```
 
