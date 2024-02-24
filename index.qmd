@@ -1,16 +1,17 @@
 ---
 title: "test quarto dashboard"
 author: "oatcracker"
+format: dashboard
 ---
 
 
-```python
+```{python}
 import polars as pl
 import plotly.express as px
 import plotly.graph_objects as go
 ```
 
-```python
+```{python}
 # create df for solar farms
 data_solar_farms = {
     "name"          : ["Setouchi Kirei", "Eurus Rokkasho", "Tomatoh Abira"],
@@ -24,7 +25,7 @@ data_solar_farms = {
 df_solar_farms = pl.DataFrame(data_solar_farms)
 ```
 
-```python
+```{python}
 # create df for typhoon paths
 data_typhoon = {
     'name'            : ['Lan',  'Lan',  'Lan',  'Guc',  'Guc',  'Guc'],
@@ -44,15 +45,20 @@ data_typhoon = {
 df_typhoon = pl.DataFrame(data_typhoon)
 ```
 
+# Page 1
 
-```python
+## Row 1
+
+### Column r1-c1
+
+```{python}
 #| title: map of typhoon paths
 fig_typhoon = px.line_mapbox(
     df_typhoon,
     lat='latitude',
     lon='longitude',
     color='name',
-    # animation_frame='name',
+    animation_frame='name',
 )
 
 fig_typhoon.update_layout(
@@ -63,13 +69,8 @@ fig_typhoon.update_layout(
 )
 ```
 
-```python
-# show data structure of fig
-# print(fig_typhoon)
-```
-
-```python
-#| title: map of typhoon paths
+```{python}
+# #| title: map of typhoon paths
 # fig_typhoon = go.Figure(
 #     go.Scattermapbox(
 #         lat = df_typhoon['latitude'],
@@ -94,8 +95,10 @@ fig_typhoon.update_layout(
 ```
 
 
-```python
-#| title: map solar farms
+### Column r1-c2
+
+```{python}
+#| title: map of solar farms
 fig_solar_farms = go.Figure(
     go.Scattermapbox(
         lat = df_solar_farms['latitude'],
@@ -119,17 +122,29 @@ fig_solar_farms.update_layout(
 )
 ```
 
-```python
-# show data structure of fig_solar_farms
-# print(fig_solar_farms)
-# fig_solar_farms.show("json") # not working...
-```
 
-```python
-#| title: ??? 
-# fig_solar_farms.add_trace(
-#     fig_typhoon.data[0]
-# )
+## Row 2
+
+```{python}
+#| title: merge two plot
+fig_merged = fig_typhoon.add_trace(
+    go.Scattermapbox(
+        lat = df_solar_farms['latitude'],
+        lon = df_solar_farms['longitude'],
+        mode = 'markers',
+        marker = go.scattermapbox.Marker(
+            size=df_solar_farms['capacity_mw']/10
+        ),
+    )
+
+)
+
+fig_merged.update_layout(
+    mapbox_style="carto-darkmatter",
+    mapbox_center_lat=36,
+    mapbox_center_lon=138,
+    mapbox_zoom=3,
+)
 ```
 
 
