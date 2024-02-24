@@ -10,7 +10,7 @@ logo: images/Picture5.png
 
 # Page 1
 
-## Row 
+## Row  1
 
 ```{python}
 #| content: valuebox
@@ -46,7 +46,7 @@ dict(
 )
 ```
 
-## Row
+## Row 2
 
 ```{python}
 #| title: card p1-r2-c1
@@ -58,7 +58,7 @@ print('p1-r2-c1')
 print('p1-r2-c2')
 ```
 
-## Row
+## Row 3
 
 ```{python}
 #| title: card p1-r3-c1
